@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,84 +8,49 @@
     <link rel="manifest" href="manifest.json">
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #000; }
-        
         .escena {
             background-image: url('https://raw.githubusercontent.com/Mivws/misterio-1582/main/Gemini_Generated_Image_mu59xkmu59xkmu59.png');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            background-size: cover; background-position: center; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; cursor: pointer;
         }
-
-        /* El Pulso de Luz sobre el calendario */
         .pulso-interactivo {
-            position: absolute;
-            top: 55%; /* Ajusta esto para que caiga justo sobre el calendario */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(212, 175, 55, 0.3);
-            border-radius: 50%;
-            border: 2px solid rgba(212, 175, 55, 0.6);
-            animation: latido 2s infinite;
-            pointer-events: none; /* Para que el toque pase a la escena */
+            position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+            width: 60px; height: 60px; background: rgba(212, 175, 55, 0.3);
+            border-radius: 50%; border: 2px solid rgba(212, 175, 55, 0.6);
+            animation: latido 2s infinite; pointer-events: none;
         }
-
         @keyframes latido {
             0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
             50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
             100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
         }
-
         .texto-ayuda {
-            position: absolute;
-            bottom: 40px;
-            color: #d4af37;
-            font-family: 'Georgia', serif;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.6;
-            text-shadow: 1px 1px 5px #000;
+            position: absolute; bottom: 40px; color: #d4af37; font-family: 'Georgia', serif;
+            font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.6;
         }
-
         #panelInfo {
             height: 100%; width: 0; position: fixed; top: 0; left: 0;
-            background-color: #fdf5e6; overflow: hidden;
-            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            background-color: #fdf5e6; overflow: hidden; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             z-index: 1000; display: flex; align-items: center; justify-content: center;
         }
-
         .texto-contenido { width: 85%; text-align: center; font-family: 'Georgia', serif; color: #3e2723; }
-        h1 { color: #8b4513; font-size: 1.8rem; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
-        p { font-size: 1.2rem; line-height: 1.6; margin: 30px 0; }
         .boton-cerrar { background: #3e2723; color: #d4af37; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-
 <div class="escena" onclick="abrirPanel()">
     <div class="pulso-interactivo"></div>
     <div class="texto-ayuda">Toca para descubrir</div>
 </div>
-
 <div id="panelInfo">
     <div class="texto-contenido">
-        <h1>📜 EL MISTERIO 1582</h1>
+        <h1>📜 MISTERIO DE 1582</h1>
         <p>¿Sabías que en octubre de 1582 el mundo perdió 10 días por orden del <strong>Papa Gregorio XIII</strong>?</p>
         <button class="boton-cerrar" onclick="cerrarPanel()">CERRAR</button>
     </div>
 </div>
-
 <script>
     function abrirPanel() { document.getElementById("panelInfo").style.width = "100%"; }
     function cerrarPanel() { document.getElementById("panelInfo").style.width = "0"; }
 </script>
-
 </body>
 </html>
