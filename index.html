@@ -7,7 +7,6 @@
     <link rel="manifest" href="manifest.json">
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #000; }
-        
         .escena {
             background-image: url('https://raw.githubusercontent.com/Mivws/misterio-1582/main/Gemini_Generated_Image_mu59xkmu59xkmu59.png');
             background-size: cover;
@@ -15,49 +14,40 @@
             height: 100vh;
             width: 100vw;
             display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Área invisible sobre el dibujo del calendario para que sea el botón */
-        .boton-secreto {
-            width: 180px; 
-            height: 180px;
-            background: rgba(255, 255, 255, 0); /* Invisible */
             cursor: pointer;
-            border: none;
-            position: absolute;
-            top: 40%; /* Ajusta esto según veas en tu celular */
         }
-
         #panelInfo {
-            height: 100%; width: 0; position: fixed; right: 0; top: 0;
-            background-color: #fdf5e6; overflow-x: hidden; transition: 0.5s;
-            z-index: 100; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            height: 100%; width: 0; position: fixed; top: 0; left: 0;
+            background-color: #fdf5e6; overflow: hidden;
+            transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            z-index: 1000; display: flex; align-items: center; justify-content: center;
+            box-shadow: 10px 0 30px rgba(0,0,0,0.5);
         }
-
-        .texto-contenido { padding: 40px; width: 280px; color: #3e2723; font-family: 'Georgia', serif; }
-        .boton-cerrar { background: #a52a2a; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+        .texto-contenido { width: 85%; text-align: center; font-family: 'Georgia', serif; color: #3e2723; }
+        h1 { color: #8b4513; font-size: 1.8rem; border-bottom: 2px solid #d4af37; padding-bottom: 10px; }
+        p { font-size: 1.2rem; line-height: 1.6; margin: 30px 0; }
+        .boton-cerrar { background: #3e2723; color: #d4af37; border: none; padding: 15px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
-<body>
-
-<div class="escena">
-    <button class="boton-secreto" onclick="abrirPanel()"></button>
-</div>
-
+<body onload="animacionInicial()">
+<div class="escena" onclick="abrirPanel()"></div>
 <div id="panelInfo">
     <div class="texto-contenido">
-        <h1>📜 EL MISTERIO</h1>
-        <p>¿Sabías que en octubre de 1582 el mundo perdió 10 días por orden del Papa Gregorio XIII?</p>
-        <button class="boton-cerrar" onclick="cerrarPanel()">Cerrar</button>
+        <h1>📜 EL SEGUNDO SECRETO</h1>
+        <p>¿Sabías que en 1582, el <strong>Papa Gregorio XIII</strong> borró 10 días de la historia? ¡La gente se durmió el 4 y despertó el 15!</p>
+        <button class="boton-cerrar" onclick="cerrarPanel()">CERRAR</button>
     </div>
 </div>
-
 <script>
-    function abrirPanel() { document.getElementById("panelInfo").style.width = "100%"; }
-    function cerrarPanel() { document.getElementById("panelInfo").style.width = "0"; }
+    const panel = document.getElementById("panelInfo");
+    function abrirPanel() { panel.style.width = "100%"; }
+    function cerrarPanel() { panel.style.width = "0"; }
+    function animacionInicial() {
+        setTimeout(() => {
+            panel.style.width = "40px";
+            setTimeout(() => { if(panel.style.width !== "100%") { panel.style.width = "0"; } }, 1000);
+        }, 2000);
+    }
 </script>
-
 </body>
 </html>
