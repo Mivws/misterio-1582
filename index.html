@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Misterio 1582</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #000; }
+        
+        .escena {
+            background-image: url('https://raw.githubusercontent.com/Mivws/misterio-1582/main/Gemini_Generated_Image_mu59xkmu59xkmu59.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Área invisible sobre el dibujo del calendario para que sea el botón */
+        .boton-secreto {
+            width: 180px; 
+            height: 180px;
+            background: rgba(255, 255, 255, 0); /* Invisible */
+            cursor: pointer;
+            border: none;
+            position: absolute;
+            top: 40%; /* Ajusta esto según veas en tu celular */
+        }
+
+        #panelInfo {
+            height: 100%; width: 0; position: fixed; right: 0; top: 0;
+            background-color: #fdf5e6; overflow-x: hidden; transition: 0.5s;
+            z-index: 100; box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+
+        .texto-contenido { padding: 40px; width: 280px; color: #3e2723; font-family: 'Georgia', serif; }
+        .boton-cerrar { background: #a52a2a; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="escena">
+    <button class="boton-secreto" onclick="abrirPanel()"></button>
+</div>
+
+<div id="panelInfo">
+    <div class="texto-contenido">
+        <h1>📜 EL MISTERIO</h1>
+        <p>¿Sabías que en octubre de 1582 el mundo perdió 10 días por orden del Papa Gregorio XIII?</p>
+        <button class="boton-cerrar" onclick="cerrarPanel()">Cerrar</button>
+    </div>
+</div>
+
+<script>
+    function abrirPanel() { document.getElementById("panelInfo").style.width = "100%"; }
+    function cerrarPanel() { document.getElementById("panelInfo").style.width = "0"; }
+</script>
+
+</body>
+</html>
