@@ -3,120 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Misterios del Tiempo</title>
+    <title>Archivos de la Simulación</title>
+    
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Georgia', serif; background-color: #1a1a1a; color: #d4af37; overflow: hidden; }
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Georgia', serif; background-color: #000; color: #d4af37; overflow-y: auto; }
         
-        /* CONTENEDOR DE MENÚ */
         #menuPrincipal {
-            height: 100vh; width: 100vw;
+            min-height: 100vh; width: 100vw;
             display: flex; flex-direction: column; align-items: center;
-            justify-content: center; background: radial-gradient(circle, #2c1e14 0%, #000 100%);
-            transition: 0.5s;
+            background: radial-gradient(circle, #2c1e14 0%, #000 100%);
+            padding-top: 50px;
         }
 
-        h1.titulo-app { font-size: 2rem; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); margin-bottom: 40px; }
+        h1.titulo-app { font-size: 1.8rem; text-shadow: 0 0 10px rgba(212, 175, 55, 0.5); text-align: center; margin-bottom: 40px; }
 
-        .lista-misterios { width: 80%; display: flex; flex-direction: column; gap: 20px; }
+        .lista-misterios { width: 85%; display: flex; flex-direction: column; gap: 15px; padding-bottom: 50px; }
 
         .boton-misterio {
-            background: rgba(212, 175, 55, 0.1);
-            border: 1px solid #d4af37;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 25px;
+            text-align: left;
+            border-radius: 8px;
             cursor: pointer;
             transition: 0.3s;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
         }
 
-        .boton-misterio:active { background: #d4af37; color: #000; }
-
-        /* VISTA DEL MISTERIO (Oculta al inicio) */
-        #vistaMisterio {
-            display: none; height: 100vh; width: 100vw; position: fixed; top: 0; left: 0;
-        }
-
-        .escena {
-            background-image: url('https://raw.githubusercontent.com/Mivws/misterio-1582/main/Gemini_Generated_Image_mu59xkmu59xkmu59.png');
-            background-size: cover; background-position: center;
-            height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center;
-        }
-
-        .pulso-interactivo {
-            position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%);
-            width: 70px; height: 70px; background: rgba(212, 175, 55, 0.3);
-            border-radius: 50%; border: 2px solid rgba(212, 175, 55, 0.6);
-            animation: latido 2s infinite;
-        }
-
-        @keyframes latido {
-            0%, 100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.8; }
-            50% { transform: translate(-50%, -50%) scale(1.3); opacity: 0.2; }
-        }
-
-        /* BOTÓN VOLVER */
-        .btn-volver {
-            position: absolute; top: 20px; left: 20px;
-            background: rgba(0,0,0,0.6); color: #d4af37;
-            border: 1px solid #d4af37; padding: 10px 15px; border-radius: 5px;
-            z-index: 2000;
-        }
-
-        /* PANEL DE INFO */
-        #panelInfo {
-            height: 100%; width: 0; position: fixed; top: 0; left: 0;
-            background-color: #fdf5e6; overflow: hidden; transition: 0.5s;
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-        }
-
-        .texto-contenido { width: 85%; text-align: center; color: #3e2723; }
-        .boton-cerrar { background: #3e2723; color: #d4af37; border: none; padding: 15px 40px; border-radius: 50px; margin-top: 20px; }
+        .boton-misterio:active { background: rgba(212, 175, 55, 0.2); border-color: #d4af37; }
+        
+        .numero { font-size: 0.8rem; margin-right: 15px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
     <div id="menuPrincipal">
-        <h1 class="titulo-app">BIBLIOTECA SECRETA</h1>
-        <div class="lista-misterios">
-            <div class="boton-misterio" onclick="mostrarMisterio('1582')">📜 El Salto del Tiempo (1582)</div>
-            <div class="boton-misterio" style="opacity: 0.5;">🔒 Próximamente...</div>
-            <div class="boton-misterio" style="opacity: 0.5;">🔒 Próximamente...</div>
-        </div>
-    </div>
-
-    <div id="vistaMisterio">
-        <button class="btn-volver" onclick="irAlMenu()">← Volver</button>
-        <div class="escena" onclick="abrirPanel()">
-            <div class="pulso-interactivo"></div>
-        </div>
+        <h1 class="titulo-app">ARCHIVOS DE LA SIMULACIÓN</h1>
         
-        <div id="panelInfo">
-            <div class="texto-contenido">
-                <h1 id="tituloMisterio">📜 EL MISTERIO 1582</h1>
-                <p id="descMisterio">¿Sabías que en octubre de 1582 el mundo perdió 10 días por orden del Papa Gregorio XIII?</p>
-                <button class="boton-cerrar" onclick="cerrarPanel()">CERRAR</button>
+        <div class="lista-misterios">
+            <div class="boton-misterio" onclick="window.location.href='1582.html'">
+                <span class="numero">01</span> 📜 El Salto del Tiempo (1582)
             </div>
+
+            <div class="boton-misterio" onclick="window.location.href='nicea.html'">
+                <span class="numero">02</span> 📜 El Diseño de la Fe (Nicea 325)
+            </div>
+
+            <div class="boton-misterio" style="opacity: 0.3;"> <span class="numero">03</span> 🔒 Próximamente... </div>
+            <div class="boton-misterio" style="opacity: 0.3;"> <span class="numero">04</span> 🔒 Próximamente... </div>
         </div>
     </div>
-
-    <script>
-        function mostrarMisterio(id) {
-            document.getElementById('menuPrincipal').style.display = 'none';
-            document.getElementById('vistaMisterio').style.display = 'block';
-        }
-
-        function irAlMenu() {
-            document.getElementById('menuPrincipal').style.display = 'flex';
-            document.getElementById('vistaMisterio').style.display = 'none';
-            cerrarPanel();
-        }
-
-        function abrirPanel() { document.getElementById("panelInfo").style.width = "100%"; }
-        function cerrarPanel() { document.getElementById("panelInfo").style.width = "0"; }
-    </script>
 
 </body>
 </html>
